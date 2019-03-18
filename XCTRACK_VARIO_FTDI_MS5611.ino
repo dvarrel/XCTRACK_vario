@@ -2,6 +2,8 @@
 VARIO XCTRACK
 arduino nano with ftdi chip, all other chip will not work
 sensor ms5611
+https://github.com/dvarrel/arduino-ms5xxx
+
 damien varrel 09/2018 
 
 Based on Arduino Vario by Benjamin PERRIN 2017 / Vari'Up
@@ -46,7 +48,9 @@ Field 4, battery voltage or charge percentage
 Percentage should be 0 to 100, with no decimals, added by 1000!
 */
 
+//https://github.com/dvarrel/arduino-ms5xxx
 #include <MS5611.h>
+
 #include <avr/wdt.h>
 /////////////////////////////////////////
 MS5611 sensor(&Wire);
