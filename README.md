@@ -1,5 +1,9 @@
 # XCTRACK_vario
-USB variometer for XCTRACK base on ms5611 high precision pressure sensor
+USB variometer for XCTRACK base on ms5611 high precision pressure sensor and LK8000
+
+Based on Arduino Vario by Benjamin PERRIN 2017 / Vari'Up
+Based on Arduino Vario by Jaros, 2012 and vario DFelix 2013
+https://github.com/LK8000/LK8000/blob/master/Docs/LK8EX1.txt
 
 parts :
 - arduino nano with ftdi chip
