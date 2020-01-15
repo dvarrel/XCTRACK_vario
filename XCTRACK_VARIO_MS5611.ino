@@ -1,6 +1,7 @@
 /*
 VARIO XCTRACK
-arduino nano with ftdi chip, all other chip will not work
+arduino nano with ftdi chip, other chips will not work
+arduino with ch340g works since xctrack beta 0.9.1
 sensor ms5611
 https://github.com/dvarrel/arduino-ms5xxx
 
