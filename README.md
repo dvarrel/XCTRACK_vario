@@ -1,4 +1,4 @@
-# XCTRACK_vario
+# XCTRACK_vario DO IT YOURSELF !
 USB variometer for XCTRACK base on ms5611 high precision pressure sensor and LK8000
 
 Based on Arduino Vario by Benjamin PERRIN 2017 / Vari'Up
