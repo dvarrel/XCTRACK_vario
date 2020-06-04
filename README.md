@@ -6,7 +6,7 @@ Based on Arduino Vario by Jaros, 2012 and vario DFelix 2013
 https://github.com/LK8000/LK8000/blob/master/Docs/LK8EX1.txt
 
 parts :
-- arduino nano with ftdi chip ( or ch340g chip with xctrack 0.9.1 beta)
+- arduino nano with ftdi chip ( or ch340g chip since xctrack 0.9.3)
 - ms5611 pressure sensor
 - usb mini - micro OTG cable
 https://my.aliexpress.com/wishlist/shared.htm?groupId=100000009108834
