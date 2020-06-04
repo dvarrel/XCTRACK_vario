@@ -1,11 +1,10 @@
 /*
 VARIO XCTRACK
-arduino nano with ftdi chip, other chips will not work
-arduino with ch340g works since xctrack beta 0.9.1
+arduino nano
 sensor ms5611
 https://github.com/dvarrel/arduino-ms5xxx
 
-damien varrel 09/2018 
+damien varrel 06/2020 
 
 Based on Arduino Vario by Benjamin PERRIN 2017 / Vari'Up
 Based on Arduino Vario by Jaros, 2012 and vario DFelix 2013
@@ -101,4 +100,3 @@ void loop(void) {
     Serial.println(checksum_end, HEX);
   }
 }
-
