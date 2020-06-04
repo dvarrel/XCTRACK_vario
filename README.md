@@ -8,7 +8,7 @@ https://github.com/LK8000/LK8000/blob/master/Docs/LK8EX1.txt
 parts :
 - arduino nano with ftdi chip ( or ch340g chip since xctrack 0.9.3)
 - ms5611 pressure sensor
-- usb mini - micro OTG cable, depends on your phone
+- usb mini - micro - type c OTG cable, depends on your phone
 https://my.aliexpress.com/wishlist/shared.htm?groupId=100000009108834
 
 - PLA box 3D printing
