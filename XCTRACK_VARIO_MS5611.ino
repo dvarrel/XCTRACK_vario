@@ -4,7 +4,7 @@ arduino nano
 sensor ms5611
 https://github.com/dvarrel/arduino-ms5xxx
 
-damien varrel 06/2020 
+damien varrel 07/2020 
 
 Based on Arduino Vario by Benjamin PERRIN 2017 / Vari'Up
 Based on Arduino Vario by Jaros, 2012 and vario DFelix 2013
@@ -57,7 +57,7 @@ MS5611 sensor(&Wire);
 #define UART_SPEED 115200
 
 uint32_t get_time = millis();
-const char compile_date[] = "XCTRACK VARIO ver " __DATE__;
+const char compile_date[] = "XCTRACK VARIO " __DATE__;
 
 void setup() {
   wdt_disable();
@@ -74,18 +74,21 @@ void setup() {
 
 void loop(void) {
   wdt_reset();
-  sensor.ReadProm();
-  sensor.Readout();
+  sensor.ReadProm(); //takes about 3ms
+  sensor.Readout(); // with OSR4096 takes about 10ms
   uint32_t Pressure=round(sensor.GetPres());
-  if (millis() >= (get_time + 333)) //every 0.33 second send NMEA output over serial port
+  uint8_t Temp=round(sensor.GetTemp()/100);
+  if (millis() >= (get_time + 100)) //every 100 milli-seconds send NMEA output over serial port
   {
     get_time = millis();
 
     //$LK8EX1,pressure,altitude,vario,temperature,battery,*checksum
-    //$LK8EX1,pressure,99999,9999,99,999,*checksum
+    //$LK8EX1,pressure,99999,9999,temp,999,*checksum
     String str_out = String("LK8EX1,")
     +String(Pressure)
-    +String(",99999,9999,99,999,");
+    +String(",99999,9999,")
+    +String(Temp)
+    +String(",999,");
   
     unsigned int checksum_end, ai, bi;                                               // Calculating checksum for data string
     for (checksum_end = 0, ai = 0; ai < str_out.length(); ai++)
