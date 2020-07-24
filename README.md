@@ -21,11 +21,15 @@ https://cad.onshape.com/documents/8ec970df0f91cd7f4dafb0b8/w/81f5e80ab2d84901aa8
 
 ![alt text](https://raw.githubusercontent.com/dvarrel/XCTRACK_vario/master/img_xctrack512.jpg)
 
+** with usb support
+
 ![alt text](https://raw.githubusercontent.com/dvarrel/XCTRACK_vario/master/vario_MS5611.png)
 
 ![alt text](https://raw.githubusercontent.com/dvarrel/XCTRACK_vario/master/img_usb-mini_soldered.jpg)
 
 ![alt text](https://raw.githubusercontent.com/dvarrel/XCTRACK_vario/master/img_usb-c_soldered.jpg)
+
+** with bluetooth support
 
 ![alt text](https://raw.githubusercontent.com/dvarrel/XCTRACK_vario/master/vario_MS5611_bluetooth.png)
 
