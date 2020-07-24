@@ -1,5 +1,5 @@
 # XCTRACK_vario DO IT YOURSELF !
-Variometer for XCTRACK base on ms5611 high precision pressure and temperature sensor and LK8000
+Variometer for XCTRACK (https://xctrack.org/) base on ms5611 high precision pressure and temperature sensor and LK8000
 
 It's works with USB or Bluetooth on XCtrack !
 
