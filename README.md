@@ -1,5 +1,6 @@
 # XCTRACK_vario DO IT YOURSELF !
 USB variometer for XCTRACK base on ms5611 high precision pressure and temperature sensor and LK8000
+
 Also support Bluetooth now as a option !
 
 Power consumption ~ 0.1W 
