@@ -1,4 +1,4 @@
-/*
+ /*
 VARIO XCTRACK
 arduino nano
 sensor ms5611
@@ -50,24 +50,48 @@ Percentage should be 0 to 100, with no decimals, added by 1000!
 
 //https://github.com/dvarrel/arduino-ms5xxx
 #include <MS5611.h>
-
 #include <avr/wdt.h>
+#include <SoftwareSerial.h>
+
 /////////////////////////////////////////
 MS5611 sensor(&Wire);
-#define UART_SPEED 115200
+#define RX 11 // not used (TX module bluetooth)
+#define TX 12 // MISO on ISCP (RX module bluetooth)
+SoftwareSerial BTserial(RX, TX); // RX not connected 
+#define USB_SPEED 115200 //serial transmision speed
+#define BLUETOOTH_SPEED 9600 //bluetooth speed (9600 by default)
+#define FREQUENCY 10 // freq output in Hz
+#define USB_MODE // uncomment for usb mode
+#define BLUETOOTH_MODE // uncomment for bluetooth mode
 
 uint32_t get_time = millis();
 const char compile_date[] = "XCTRACK VARIO " __DATE__;
+const char mess_check[] = "checking MS5611 sensor...";
+const char mess_error[] = "Error connecting MS5611...";
+const char mess_reset[] = "Reset in 1s...";
 
 void setup() {
   wdt_disable();
-  Serial.begin(UART_SPEED);       // set up arduino serial port
+  #ifdef USB_MODE
+  Serial.begin(USB_SPEED);
   Serial.println(compile_date);
-  Serial.println("checking MS5611 sensor...");
+  Serial.println(mess_check);
+  #endif
+  #ifdef BLUETOOTH_MODE
+  BTserial.begin(BLUETOOTH_SPEED);     // start communication with the HC-05 using 38400
+  BTserial.println(compile_date);
+  BTserial.println(mess_check);
+  #endif
   wdt_enable(WDTO_1S); //enable the watchdog 1s without reset
   if (sensor.connect()>0) {  
-    Serial.println("Error connecting MS5611...");
-    Serial.println("reset in 1s...");
+    #ifdef USB_MODE
+    Serial.println(mess_error);
+    Serial.println(mess_reset);
+    #endif
+    #ifdef BLUETOOTH_MODE
+    BTserial.println(mess_error);
+    BTserial.println(mess_reset);
+    #endif    
     delay(1200); //for watchdog timeout
   }
 }
@@ -97,9 +121,17 @@ void loop(void) {
       checksum_end ^= bi;
     }
 
+    #ifdef USB_MODE
     Serial.print("$");       
     Serial.print(str_out);
     Serial.print("*");
     Serial.println(checksum_end, HEX);
+    #endif
+    #ifdef BLUETOOTH_MODE
+    BTserial.print("$");       
+    BTserial.print(str_out);
+    BTserial.print("*");
+    BTserial.println(checksum_end, HEX);
+    #endif
   }
 }
