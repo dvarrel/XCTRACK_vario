@@ -1,9 +1,9 @@
 # XCTRACK_vario DO IT YOURSELF !
-USB variometer for XCTRACK base on ms5611 high precision pressure and temperature sensor and LK8000
+Variometer for XCTRACK base on ms5611 high precision pressure and temperature sensor and LK8000
 
-Also support Bluetooth now as a option !
+It's works with USB or Bluetooth on XCtrack !
 
-Power consumption ~ 0.1W 
+Power consumption ~ 0.1W ( a little bit more with bluetooth )
 
 Based on Arduino Vario by Benjamin PERRIN 2017 / Vari'Up
 Based on Arduino Vario by Jaros, 2012 and vario DFelix 2013
@@ -26,5 +26,7 @@ https://cad.onshape.com/documents/8ec970df0f91cd7f4dafb0b8/w/81f5e80ab2d84901aa8
 ![alt text](https://raw.githubusercontent.com/dvarrel/XCTRACK_vario/master/img_usb-mini_soldered.jpg)
 
 ![alt text](https://raw.githubusercontent.com/dvarrel/XCTRACK_vario/master/img_usb-c_soldered.jpg)
+
+![alt text](https://raw.githubusercontent.com/dvarrel/XCTRACK_vario/master/vario_MS5611_bluetooth.png)
 
 ![alt text](https://raw.githubusercontent.com/dvarrel/XCTRACK_vario/master/img_usb-mini_bluetooth_soldered.jpg)
