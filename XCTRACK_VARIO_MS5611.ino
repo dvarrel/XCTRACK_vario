@@ -64,7 +64,6 @@ SoftwareSerial BTserial(RX, TX); // RX not connected
 #define USB_MODE // uncomment for usb mode
 #define BLUETOOTH_MODE // uncomment for bluetooth mode
 
-uint32_t get_time = millis();
 const char compile_date[] = "XCTRACK VARIO " __DATE__;
 const char mess_check[] = "checking MS5611 sensor...";
 const char mess_error[] = "Error connecting MS5611...";
@@ -96,21 +95,30 @@ void setup() {
   }
 }
 
+uint32_t get_time = millis();
+uint32_t sum = 0;
+uint8_t n = 0;
+
+
 void loop(void) {
   wdt_reset();
   sensor.ReadProm(); //takes about 3ms
   sensor.Readout(); // with OSR4096 takes about 10ms
-  uint32_t Pressure=round(sensor.GetPres());
-  uint8_t Temp=round(sensor.GetTemp()/100);
-  if (millis() >= (get_time + 100)) //every 100 milli-seconds send NMEA output over serial port
+  uint32_t Pressure = sensor.GetPres();
+  sum += Pressure;
+  n += 1;
+  if (millis() >= (get_time + (1000/FREQUENCY))) //every 100 milli-seconds send NMEA output over serial port
   {
     get_time = millis();
+    Pressure = sum / n ;
+    sum=0; n=0;
+    uint8_t Temp = sensor.GetTemp()/100;
 
     //$LK8EX1,pressure,altitude,vario,temperature,battery,*checksum
     //$LK8EX1,pressure,99999,9999,temp,999,*checksum
     String str_out = String("LK8EX1,")
     +String(Pressure)
-    +String(",99999,9999,")
+    +String(",0,9999,")
     +String(Temp)
     +String(",999,");
   
@@ -121,7 +129,7 @@ void loop(void) {
       checksum_end ^= bi;
     }
 
-    #ifdef USB_MODE
+    #ifdef USB_MODE      
     Serial.print("$");       
     Serial.print(str_out);
     Serial.print("*");
@@ -133,5 +141,6 @@ void loop(void) {
     BTserial.print("*");
     BTserial.println(checksum_end, HEX);
     #endif
+   
   }
 }
