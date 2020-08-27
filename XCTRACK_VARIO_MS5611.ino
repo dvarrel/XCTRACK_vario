@@ -93,6 +93,7 @@ void setup() {
     #endif    
     delay(1200); //for watchdog timeout
   }
+ sensor.ReadProm(); //takes about 3ms
 }
 
 uint32_t get_time = millis();
@@ -102,7 +103,6 @@ uint8_t n = 0;
 
 void loop(void) {
   wdt_reset();
-  sensor.ReadProm(); //takes about 3ms
   sensor.Readout(); // with OSR4096 takes about 10ms
   uint32_t Pressure = sensor.GetPres();
   sum += Pressure;
