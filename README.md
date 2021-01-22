@@ -14,23 +14,23 @@ parts :
 - ms5611 pressure and temperature sensor
 - bluetooth module in option ( hc-05 or hc-06 or cpp module )
 - usb mini - micro - type c OTG cable (if USB mode) , depends on your phone 
-https://my.aliexpress.com/wishlist/shared.htm?groupId=100000009108834
+<a href="https://my.aliexpress.com/wishlist/shared.htm?groupId=100000009108834" target="_blank">aliexpress</a>
 
 - PLA box 3D printing
-https://cad.onshape.com/documents/8ec970df0f91cd7f4dafb0b8/w/81f5e80ab2d84901aa8e29be/e/2df0103f0eb100d6330b3609
+<a href="https://cad.onshape.com/documents/8ec970df0f91cd7f4dafb0b8/w/81f5e80ab2d84901aa8e29be/e/2df0103f0eb100d6330b3609" target="_blank">Onshape</a>
 
 ![alt text](img/xctrack512.jpg)
 
 ## with usb support only
 
-![alt text](https://raw.githubusercontent.com/dvarrel/XCTRACK_vario/master/vario_MS5611.png)
+![alt text](img/vario_MS5611.png)
 
-![alt text](https://raw.githubusercontent.com/dvarrel/XCTRACK_vario/master/img_usb-mini_soldered.jpg)
+![alt text](img/usb-mini_soldered.jpg)
 
-![alt text](https://raw.githubusercontent.com/dvarrel/XCTRACK_vario/master/img_usb-c_soldered.jpg)
+![alt text](img/usb-c_soldered.jpg)
 
 ## with usb and bluetooth support
 
-![alt text](https://raw.githubusercontent.com/dvarrel/XCTRACK_vario/master/vario_MS5611_bluetooth.png)
+![alt text](img/vario_MS5611_bluetooth.png)
 
-![alt text](https://raw.githubusercontent.com/dvarrel/XCTRACK_vario/master/img_usb-mini_bluetooth_soldered.jpg)
+![alt text](img/usb-mini_bluetooth_soldered.jpg)
