@@ -2,7 +2,6 @@
 VARIO XCTRACK
 arduino nano
 sensor ms5611
-https://github.com/dvarrel/arduino-ms5xxx
 
 damien varrel 07/2020 
 
@@ -10,45 +9,12 @@ Based on Arduino Vario by Benjamin PERRIN 2017 / Vari'Up
 Based on Arduino Vario by Jaros, 2012 and vario DFelix 2013
 
 https://github.com/LK8000/LK8000/blob/master/Docs/LK8EX1.txt
-
 $LK8EX1,pressure,altitude,vario,temperature,battery,*checksum
 
-Field 0, raw pressure in hPascal:
-  hPA*100 (example for 1013.25 becomes  101325) 
-  no padding (987.25 becomes 98725, NOT 098725)
-  If no pressure available, send 999999 (6 times 9)
-  If pressure is available, field 1 altitude will be ignored
-
-Field 1, altitude in meters, relative to QNH 1013.25
-  If raw pressure is available, this value will be IGNORED (you can set it to 99999
-  but not really needed)!
-  (if you want to use this value, set raw pressure to 999999)
-  This value is relative to sea level (QNE). We are assuming that
-  currently at 0m altitude pressure is standard 1013.25.
-  If you cannot send raw altitude, then send what you have but then
-  you must NOT adjust it from Basic Setting in LK.
-  Altitude can be negative
-  If altitude not available, and Pressure not available, set Altitude
-  to 99999  (5 times 9)
-  LK will say "Baro altitude available" if one of fields 0 and 1 is available.
-
-Field 2, vario in cm/s
-  If vario not available, send 9999  (4 times 9)
-  Value can also be negative
-
-Field 3, temperature in C , can be also negative
-  If not available, send 99
-
-Field 4, battery voltage or charge percentage
-  Cannot be negative
-  If not available, send 999 (3 times 9)
-  Voltage is sent as float value like: 0.1 1.4 2.3  11.2 
-  To send percentage, add 1000. Example 0% = 1000
-  14% = 1014 .  Do not send float values for percentages.
-Percentage should be 0 to 100, with no decimals, added by 1000!
+test sentence PRS, more shorter
 */
 
-//https://github.com/dvarrel/arduino-ms5xxx
+//ms5611 library by Roman Schmitz
 #include <MS5611.h>
 #include <avr/wdt.h>
 #include <SoftwareSerial.h>
@@ -63,6 +29,14 @@ SoftwareSerial BTserial(RX, TX); // RX not connected
 #define FREQUENCY 10 // freq output in Hz
 #define USB_MODE // uncomment for usb mode
 #define BLUETOOTH_MODE // uncomment for bluetooth mode
+#define USE_LK8000
+/*
+ * sentences to choice : 
+ * $LK8EX1,pressure,altitude,vario,temperature,battery,*checksum
+ * PRS pressure in pascal in hexadecimal format
+ * LK8000 : 32 chars to send PRS : 10 chars to send
+ * bluetooth in 9600bauds -> 1.25ms for a char
+*/
 
 const char compile_date[] = "XCTRACK VARIO " __DATE__;
 const char mess_check[] = "checking MS5611 sensor...";
@@ -74,6 +48,7 @@ void setup() {
   #ifdef USB_MODE
   Serial.begin(USB_SPEED);
   Serial.println(compile_date);
+  Serial.println(mess_check);
   Serial.println(mess_check);
   #endif
   #ifdef BLUETOOTH_MODE
@@ -93,7 +68,7 @@ void setup() {
     #endif    
     delay(1200); //for watchdog timeout
   }
- sensor.ReadProm(); //takes about 3ms
+  sensor.ReadProm(); //takes about 3ms
 }
 
 uint32_t get_time = millis();
@@ -116,6 +91,9 @@ void loop(void) {
 
     //$LK8EX1,pressure,altitude,vario,temperature,battery,*checksum
     //$LK8EX1,pressure,99999,9999,temp,999,*checksum
+
+    #ifdef USE_LK8000
+    
     String str_out = String("LK8EX1,")
     +String(Pressure)
     +String(",0,9999,")
@@ -141,6 +119,17 @@ void loop(void) {
     BTserial.print("*");
     BTserial.println(checksum_end, HEX);
     #endif
-   
+
+    #else // use PRS sentence
+    String str_out = String("PRS ")
+    + String(Pressure, HEX);
+    #ifdef USB_MODE      
+    Serial.println(str_out);
+    #endif
+    #ifdef BLUETOOTH_MODE
+    BTserial.println(str_out);
+    #endif
+    
+    #endif
   }
 }
