@@ -14,7 +14,7 @@ $LK8EX1,pressure,altitude,vario,temperature,battery,*checksum
 test sentence PRS, more shorter
 */
 
-//ms5611 library by Roman Schmitz
+//MS5XXX library by Roman Schmitz
 #include <MS5611.h>
 #include <avr/wdt.h>
 #include <SoftwareSerial.h>
