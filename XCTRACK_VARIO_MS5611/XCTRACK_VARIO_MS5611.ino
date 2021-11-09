@@ -27,8 +27,8 @@ SoftwareSerial BTserial(RX, TX); // RX not connected
 #define USB_SPEED 115200 //serial transmision speed
 #define BLUETOOTH_SPEED 9600 //bluetooth speed (9600 by default)
 #define FREQUENCY 10 // freq output in Hz
-#define USB_MODE // uncomment for usb mode
-#define BLUETOOTH_MODE // uncomment for bluetooth mode
+#define USB_MODE // usb by default
+// #define BLUETOOTH_MODE // uncomment this line and comment the line above for bluetooth mode
 #define USE_LK8000
 /*
  * sentences to choice : 
