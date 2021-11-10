@@ -50,7 +50,7 @@ to
 
 ```
 #define USB_MODE // usb by default
-#define BLUETOOTH_MODE // uncomment this line and comment the line above for bluetooth mode
+#define BLUETOOTH_MODE // uncomment this line for bluetooth mode
 ```
 
 Note: To build this vario, you *may* be able to use other Arduinos besides the nano: simply connect the SCL/SDA of the MS5611 to the respective SCL/SDA ports of your Arduino.
@@ -75,9 +75,23 @@ Note: To build this vario, you *may* be able to use other Arduinos besides the n
 ### Known issues
 
 #### The arduino seems bricked
-You may have connected the SCL/SDA ports wrong. If you can't upload to your arduino, disconnect it from the computer, press and hold the reset button, plug it back (don't release the reset), and click upload: when the IDE says that is uploading (after compiling ends) release the reset button.
+You may have connected the SCL/SDA ports wrong. 
+
+If you can't upload to your arduino:
+
+1) Disconnect it from the computer 
+   
+1) Press and hold the reset button
+
+1) Plug it back (don't release the reset)
+   
+1) Click upload (don't release the reset)
+   
+1) When the IDE says that is uploading (after compiling ends) release the reset button
 
 #### Can't upload
-Assuming you are using a nano, you may have an older bootloader version. Change the processor to "ATmega328P (Old Bootloader)" 
+Assuming you are using a nano, you may have an older bootloader version. 
+
+Change the processor to "ATmega328P (Old Bootloader)" 
 
 ![img.png](img/old-bootloader.png)
