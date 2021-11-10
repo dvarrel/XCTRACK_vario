@@ -35,21 +35,21 @@ https://github.com/LK8000/LK8000/blob/master/Docs/LK8EX1.txt
 
 ## Step by step
 
-You will need to download the MS5XXX library by Roman Schmitz. For this, go to Tools -> Manage Libraries and search for "MS5xxx"; install the library done by  Roman Schmitz.
+1) Download MS5XXX library by Roman Schmitz. (Go to Tools, Manage Libraries and search for "MS5xxx"; install the library done by  Roman Schmitz.)
 
-If you want to use it as only usb, just upload the code in XCTRACK_VARIO_MS5611.
+1) If you want to use it as only usb, just upload the code in (XCTRACK_VARIO_MS5611/XCTRACK_VARIO_MS5611.ino).
 
-To use it as bluetooth, simply change the following code
+To use it as bluetooth (and USB), simply change the following code
 
 ```
 #define USB_MODE // usb by default
-// #define BLUETOOTH_MODE // uncomment this line and comment the line above for bluetooth mode
+// #define BLUETOOTH_MODE // uncomment this line for bluetooth mode
 ```
 
 to
 
 ```
-// #define USB_MODE // usb by default
+#define USB_MODE // usb by default
 #define BLUETOOTH_MODE // uncomment this line and comment the line above for bluetooth mode
 ```
 
