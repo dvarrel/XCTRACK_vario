@@ -3,8 +3,6 @@ VARIO XCTRACK
 arduino nano
 sensor ms5611
 
-damien varrel 07/2020 
-
 Based on Arduino Vario by Benjamin PERRIN 2017 / Vari'Up
 Based on Arduino Vario by Jaros, 2012 and vario DFelix 2013
 

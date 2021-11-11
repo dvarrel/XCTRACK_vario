@@ -8,7 +8,7 @@ SoftwareSerial BTserial(RX, TX); // RX not connected
 #define USB_SPEED 115200 //define serial transmision speed
 #define BLUETOOTH_SPEED 9600 //bluetooth speed (9600 by default)
 #define FREQUENCY 10 // freq output in Hz
-#define USB_MODE // uncomment for usb mode
+//#define USB_MODE // uncomment for usb mode
 #define BLUETOOTH_MODE // uncomment for bluetooth mode
 
 void setup()                // setup() function to setup all necessary parameters before we go to endless loop() function
@@ -34,23 +34,19 @@ void loop(void) {
     +String(Pressure)
     +String(",0,9999,0,999,");
     
-    unsigned int checksum_end, ai, bi;                                               // Calculating checksum for data string
-    for (checksum_end = 0, ai = 0; ai < str_out.length(); ai++)
+    uint16_t checksum = 0, bi;
+    for (uint8_t ai = 0; ai < str_out.length(); ai++)
     {
-      bi = (unsigned char)str_out[ai];
-      checksum_end ^= bi;
+      bi = (uint8_t)str_out[ai];
+      checksum ^= bi;
     }
-    #ifdef USB_MODE
-    Serial.print("$");       
-    Serial.print(str_out);
-    Serial.print("*");
-    Serial.println(checksum_end, HEX);
+    str_out = "$"+str_out+"*"+String(checksum, HEX);
+    
+    #ifdef USB_MODE      
+    Serial.println(str_out);
     #endif
     #ifdef BLUETOOTH_MODE
-    BTserial.print("$");                     //print first sign of NMEA protocol
-    BTserial.print(str_out);                 //print data string
-    BTserial.print("*");                     //end of protocol string
-    BTserial.println(checksum_end, HEX);
+    BTserial.println(str_out);
     #endif
 
   }
