@@ -56,10 +56,10 @@ const char mess_reset[] = "Reset in 1s...";
 
 void setup() {
   wdt_disable();
-  delay(10);
   #ifdef USB_MODE
   Serial.begin(USB_SPEED);
   Serial.println(compile_date);
+  Serial.println(mess_check);
   Serial.println(mess_check);
   #endif
   #ifdef BLUETOOTH_MODE
