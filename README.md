@@ -30,6 +30,7 @@ https://github.com/LK8000/LK8000/blob/master/Docs/LK8EX1.txt
 <a href="https://my.aliexpress.com/wishlist/shared.htm?groupId=100000009108834" target="_blank">aliexpress</a>
 - PLA box 3D printing
 <a href="https://cad.onshape.com/documents/8ec970df0f91cd7f4dafb0b8/w/81f5e80ab2d84901aa8e29be/e/2df0103f0eb100d6330b3609" target="_blank">Onshape</a>
+- STL files for printing in stl folder
   
 <img src="img/xctrack.jpg" width="512px"/>
 
